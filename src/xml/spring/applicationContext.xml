@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context-4.0.xsd
+     http://www.springframework.org/schema/aop
+    http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+     http://www.springframework.org/schema/tx
+    http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+    
+    
+    <context:component-scan base-package="com.entity"></context:component-scan>
+    <!-- 将资源文件加载到spring配置文件中 -->
+	<bean id="propertyConfig" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+    	<property name="locations">
+    		<list>
+    			<value>classpath:mysql.properties</value>
+    		</list>
+    	</property>
+    </bean>
+	<!-- 配置datasource 数据源 -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="${driverClassName}"></property>
+		<property name="url" value="${url}"></property>
+		<property name="username" value="${username}"></property>
+		<property name="password" value="${password}"></property>
+		<property name="maxActive" value="${maxActive}"></property>
+		<property name="initialSize" value="${initialSize}"></property>
+		<property name="maxIdle" value="${maxIdle}"></property>
+		<property name="minIdle" value="${minIdle}"></property>
+		<property name="maxWait" value="${maxWait}"></property>
+	</bean>
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="configLocation" value="classpath:xml/mybatis/mybaits-configuraction.xml"></property>
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	
+	
+	<bean id="commonUtil" class="com.util.CommonUtil"/>
+	
+ 	<bean id="userMapper" class="org.mybatis.spring.mapper.MapperFactoryBean" > 
+ 		<property name="mapperInterface" value="com.login.mapper.UserMapper"></property> 
+ 		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property> 
+ 	</bean> 
+ 	<bean id="userService" class="com.login.service.impl.UserServiceImpl" > 
+ 		<property name="userMapper" ref="userMapper"></property>
+ 	</bean> 
+ 	<bean id="deptMapper" class="org.mybatis.spring.mapper.MapperFactoryBean" > 
+ 		<property name="mapperInterface" value="com.dept.mapper.DeptMapper"></property> 
+ 		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property> 
+ 	</bean> 
+	<bean id="deptService" class="com.dept.service.impl.DeptServiceImpl" > 
+ 		<property name="deptMapper" ref="deptMapper"></property> 
+ 	</bean>
+ 	<bean id="empMapper" class="org.mybatis.spring.mapper.MapperFactoryBean" > 
+ 		<property name="mapperInterface" value="com.emp.mapper.EmpMapper"></property> 
+ 		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property> 
+ 	</bean> 
+	<bean id="empService" class="com.emp.service.impl.EmpServiceImpl" > 
+ 		<property name="empMapper" ref="empMapper"></property> 
+ 		<property name="userMapper" ref="userMapper"></property> 
+ 	</bean>
+ 	<bean id="generatorMapper" class="org.mybatis.spring.mapper.MapperFactoryBean" > 
+ 		<property name="mapperInterface" value="com.generator.mapper.GeneratorMapper"></property> 
+ 		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property> 
+ 	</bean> 
+	<bean id="generatorService" class="com.generator.service.impl.GeneratorServiceImpl" > 
+ 		<property name="generatorMapper" ref="generatorMapper"></property> 
+ 	</bean>
+ 	<bean id="limitMapper" class="org.mybatis.spring.mapper.MapperFactoryBean" > 
+ 		<property name="mapperInterface" value="com.limit.mapper.LimitMapper"></property> 
+ 		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property> 
+ 	</bean> 
+	<bean id="limitService" class="com.limit.service.impl.LimitServiceImpl"> 
+		<property name="limitMapper" ref="limitMapper"></property>
+ 	</bean>
+ 	<bean id="logMapper" class="org.mybatis.spring.mapper.MapperFactoryBean" > 
+ 		<property name="mapperInterface" value="com.log.mapper.LogMapper"></property> 
+ 		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property> 
+ 	</bean> 
+	<bean id="logService" class="com.log.service.impl.LogServiceImpl" > 
+ 		<property name="logMapper" ref="logMapper"></property> 
+ 		<property name="empMapper" ref="empMapper"></property> 
+ 	</bean>
+ 	
+ 	<import resource="applicationContext-moduleconfig.xml"/>
+</beans>

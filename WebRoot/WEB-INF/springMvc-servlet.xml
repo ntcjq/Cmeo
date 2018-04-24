@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+	">
+
+		<!-- 加载mvc默认驱动 -->
+		<mvc:annotation-driven/>
+		<!-- 扫描包 -->
+		<context:component-scan base-package="com.login.action"></context:component-scan>
+		<context:component-scan base-package="com.emp.action"></context:component-scan>
+		<context:component-scan base-package="com.dept.action"></context:component-scan>
+		<context:component-scan base-package="com.generator.action"></context:component-scan>
+		<context:component-scan base-package="com.limit.action"></context:component-scan>
+		<context:component-scan base-package="com.log.action"></context:component-scan>
+		<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+			<property name="prefix" value="jsp/"></property>
+			<property name="suffix" value=".jsp"></property>
+		</bean>
+		
+		<!-- proxy-target-class属性，默认为false，表示使用jdk动态代理织入增强，poxy-target-class="true"时，表示使用CGLib动态代理技术织入增强。-->
+ 		<!-- 不过即使proxy-target-class设置为false，如果目标类没有声明接口，则spring将自动使用CGLib动态代理 (这句话不是很理解)-->
+ 		<!-- 这个要加载springmvc的配置里 -->
+ 		<aop:aspectj-autoproxy proxy-target-class="true" /> 
+	</beans>

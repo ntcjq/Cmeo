@@ -1,0 +1,16 @@
+html{}
+body{margin:0;overflow:hidden; font-family:"Microsoft YaHei","Î¢ÈíÑÅºÚ","SimSun","ËÎÌå"; background:url(../img/LOGINBACK.png);}
+
+
+.LoginBack{ position:absolute; width:100%; height:448px; left:0; top:12%; background:url(../img/LoginBack1.png) repeat-x;}
+.loginpic{ position:relative; float:left; width:342px;height:448px; margin-left:8%;}
+.LoginBox{ position:relative; float:right;width:438px;height:448px; margin-right:8%; background:url(../img/LoginBoxBack.png) no-repeat;}
+
+.LoginBox_tab{ width:300; margin-left:auto; margin-right:auto; margin-top:138px;}
+.LoginBox_tab th{ height:36px; color:#025099; font-size:16px; float:left; line-height:38px;}
+.LoginBox_tab td{ height:36px;line-height:38px;}
+
+.textfield{ width:188px; height:36px; line-height:36px; text-indent:8px; background:url(../img/InputBack1.jpg) no-repeat; border:0; margin:2px auto 2px 6px; }
+.textfield2{width:92px; height:36px; line-height:36px; text-indent:8px; background:url(../img/InputBack2.jpg) no-repeat; border:0; margin:2px auto 2px 6px; }
+
+.Loginbotton{ width:134px; height:45px; background:url(../img/LoginButton.png); border:0; margin-top:20px;}

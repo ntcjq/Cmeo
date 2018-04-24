@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+ 
+	<typeAliases>
+		<typeAlias type="com.entity.User" alias="user"/>
+		<typeAlias type="com.entity.Dept" alias="dept"/>
+		<typeAlias type="com.entity.Emp" alias="emp"/>
+		<typeAlias type="com.entity.Generator" alias="generator"/>
+		<typeAlias type="com.entity.Role" alias="role"/>
+		<typeAlias type="com.entity.RoleLimitMap" alias="roleLimitMap"/>
+		<typeAlias type="com.entity.RoleDistribute" alias="roleDistribute"/>
+		<typeAlias type="com.entity.EmpLimit" alias="empLimit"/>
+		<typeAlias type="com.entity.Log" alias="log"/>
+		
+	</typeAliases>
+	<mappers>
+		<mapper resource="com/login/mapper/UserMapper.xml"/> 
+		<mapper resource="com/dept/mapper/DeptMapper.xml"/> 
+		<mapper resource="com/emp/mapper/EmpMapper.xml"/> 
+		<mapper resource="com/generator/mapper/GeneratorMapper.xml"/>
+		<mapper resource="com/limit/mapper/LimitMapper.xml"/>
+		<mapper resource="com/log/mapper/LogMapper.xml"/>
+	</mappers>
+</configuration>

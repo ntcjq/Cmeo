@@ -1,0 +1,99 @@
+html{
+line-height:1.2em;
+}
+
+body {
+	margin:0;
+	background:url(../img/Menu-bg.jpg) no-repeat;
+	/*	background:#e2f8ff;*/
+}
+
+/*
+A:link {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+A:hover {
+	COLOR: #0000ff; TEXT-DECORATION: none;
+}
+A:active {
+	TEXT-DECORATION: none
+}
+A:visited {
+	TEXT-DECORATION: none
+}
+*/
+.level2 a{
+    display:block;
+	font-size:13px;
+	text-decoration: none;
+	cursor: hand;
+}
+.level2 a:hover,.level2 a.active{
+background:#0099FF;
+}
+
+
+#Menu {
+	padding: 0px;
+	float: left;
+	width:192px;
+	margin: 0px;
+	margin-left:1px;
+}
+#MenuUl{
+	list-style:none;
+	margin:0 0 2px 0;
+	padding: 0px;
+}
+.level1 {
+font-family:"Microsoft YaHei","Î¢ÈíÑÅºÚ","SimSun","ËÎÌå";
+color:#FFFFFF;
+font-size:14px;
+font-weight:bolder;
+}
+.level1Style {
+	width:192px;
+	height:33px;
+	margin-left:0px;
+	background:url(../img/MenuButton_bg.jpg);
+	cursor: pointer;
+	overflow:hidden;
+}
+
+.level1SelectedStyle {
+	width: 196px;
+	cursor: hand;
+}
+.MenuLevel2 {
+	list-style:none;
+	width:192px;
+	padding: 0;
+	overflow:hidden;
+}
+.MenuLevel2 li a.selected{
+background:url(../img/Menu_li_back2.jpg);
+}
+.level2 {
+width:192px;
+height:34px;
+margin-bottom:0px;
+background:url(../img/Menu_li_back1.jpg);
+overflow:hidden;
+}
+.level2Style {
+color:#FFFFFF;
+height:34px;
+padding-left:64px;
+border:0px #E1F8FD solid;
+line-height:2.2em;
+overflow:hidden;
+cursor: hand;
+}
+img.Icon{
+margin-top:-3px;
+margin-left:20px
+}
+img._img{
+margin-top:-1px;
+margin-right:-2px;
+}

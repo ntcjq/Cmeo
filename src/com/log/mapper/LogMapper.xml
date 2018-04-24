@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.log.mapper.LogMapper">
+	<select id="selectLogListByConditions"  parameterType="java.util.Map" resultType="log" >
+		select * from	log 
+		<where> 
+		<if test="1==1">  
+            1 = 1 
+        </if> 
+        <if test="id!= null and id!= '' ">  
+            and id like concat(concat('%',#{id}),'%')  
+        </if>  
+        <if test="managerId!= null and managerId!= '' ">  
+            and managerId like concat(concat('%',#{managerId}),'%')  
+        </if>  
+        <if test="visitModel!=null and visitModel!= '' ">  
+            and visitModel = #{visitModel}  
+        </if>  
+        <!--
+        <if test="startTime!=null and startTime!= '' and endTime!=null and endTime!= ''">  
+             and operatetime between #{startTime} and #{endTime} 
+        </if> 
+        -->
+        <if test="startTime!=null and startTime!= ''">  
+             and DATE_FORMAT(operatetime,'%Y-%m-%d') <![CDATA[>=]]>  DATE_FORMAT(#{startTime},'%Y-%m-%d')
+        </if> 
+        <if test="endTime!=null and endTime!= ''">  
+             and DATE_FORMAT(operatetime,'%Y-%m-%d') <![CDATA[<=]]>  DATE_FORMAT(#{endTime},'%Y-%m-%d')
+        </if>
+            order by id limit #{onePageCount} offset #{startCount}  
+    </where>  
+	</select>
+	<select id="selectLogListByConditionsAll"  parameterType="java.util.Map" resultType="int" >
+		select count(*) from	log 
+		<where>  
+        <if test="id!= null and id!= '' ">  
+            id like concat(concat('%',#{id}),'%')  
+        </if>  
+        <if test="managerId!= null and managerId!= '' ">  
+            and managerId like concat(concat('%',#{managerId}),'%')  
+        </if>  
+        <if test="visitModel!=null and visitModel!= '' ">  
+            and visitModel = #{visitModel}  
+        </if>  
+        <!--
+        <if test="startTime!=null and startTime!= '' and endTime!=null and endTime!= ''">  
+             and operatetime between #{startTime} and #{endTime} 
+        </if> 
+        -->
+        <if test="startTime!=null and startTime!= ''">  
+             and DATE_FORMAT(operatetime,'%Y-%m-%d') <![CDATA[>=]]>  DATE_FORMAT(#{startTime},'%Y-%m-%d')
+        </if> 
+        <if test="endTime!=null and endTime!= ''">  
+             and DATE_FORMAT(operatetime,'%Y-%m-%d') <![CDATA[<=]]>  DATE_FORMAT(#{endTime},'%Y-%m-%d')
+        </if>
+    </where>  
+	</select>
+	<insert id="addLog" parameterType="log">
+		insert into log(id,managerId,managerName,visitModel,action,operatetime) values(#{id},#{managerId},#{managerName},#{visitModel},#{action},#{operatetime})
+	</insert>
+</mapper>

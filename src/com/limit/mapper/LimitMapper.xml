@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.limit.mapper.LimitMapper">
+	<select id="selectAllRoles"  resultType="role" >
+		select * from	role
+	</select>
+	
+	<insert id="addRole" parameterType="role">
+		insert into role(roleName,module) values(#{roleName},#{module})
+	</insert>
+	
+	<delete id="deleteRoles" parameterType="java.util.List">
+		delete from role where roleName in 
+		<foreach collection="list" item="roleName" open="(" separator="," close=")">
+			#{roleName}  
+    	</foreach>  
+	</delete>
+	
+	<delete id="deleteEmpRoles" parameterType="java.util.List">
+		delete from roledistribute where roleName in 
+		<foreach collection="list" item="roleName" open="(" separator="," close=")">
+			#{roleName}  
+    	</foreach>  
+	</delete>
+	
+	<insert id="addLimitForRole" parameterType="roleLimitMap">
+		insert into roleLimitMap(id,roleName,roleLimit) values(#{id},#{roleName},#{roleLimit})
+	</insert>
+	
+	<delete id="deleteRoleLimit" parameterType="java.util.List">
+		delete from roleLimitMap where roleName in 
+		<foreach collection="list" item="roleName" open="(" separator="," close=")">
+			#{roleName}  
+    	</foreach>  
+	</delete>
+	
+	<insert id="addRoleForEmp" parameterType="roleDistribute">
+		insert into roleDistribute(id,empno,roleName) values(#{id},#{empno},#{roleName})
+	</insert>
+	
+	<select id="selectAllEmpLimit"  resultType="string" parameterType="int">
+		select distinct(roleLimitMap.roleLimit) from roleLimitMap,roleDistribute where roleLimitMap.roleName = roleDistribute.roleName and roleDistribute.empno = #{empno}
+	</select>
+	
+	<select id="selectOneEmpLimit"  resultType="empLimit" parameterType="int">
+		select * from empLimit where  empno = #{empno}
+	</select>
+	
+	<insert id="addLimitForEmp" parameterType="empLimit">
+		insert into emplimit(empno,allLimit) values(#{empno},#{allLimit})
+	</insert>
+	
+	<update id="updateLimitForEmp" parameterType="empLimit">
+		update emplimit set empno=#{empno},allLimit=#{allLimit} where empno=#{empno}
+	</update>
+	
+</mapper>

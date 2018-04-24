@@ -1,0 +1,152 @@
+*{
+margin:0;
+padding:0;
+}
+html{}
+body {
+margin: 0px;
+/*background:#e4f4fe;*/
+overflow-x:hidden;
+font-family:"Microsoft YaHei","Î¢ÈíÑÅºÚ","SimSun","ËÎÌå";
+}
+
+
+a:link{
+    color:#CC6600;TEXT-DECORATION:none; 
+}
+A:visited {
+	COLOR:#CC6600; TEXT-DECORATION:none; 
+}
+A:active {
+	COLOR:#FF3300; TEXT-DECORATION: none;
+}
+a:hover{
+    color:#FF3300; text-decoration:underline;
+}
+
+img.Icon{
+margin-top:-4px;
+}
+/*******************************************************       div           *************************************/
+
+#MainHeader{
+width:100%;
+height:32px;
+background:url(../img/MainHead_bg.jpg) repeat-x;
+}
+.MainTop{
+float:left;
+margin-left:8px;
+}
+.MainTop tr td,.MainTop tr th{
+font-size:14px;
+font-weight:bolder;
+letter-spacing:1px;
+color:#2e2e2e;
+/*color:#FFFFFF;*/
+}
+.MainTop tr th{color:#0556ec;}
+.MainContent{
+width:820px;
+min-height:438px;
+background:#ffffff;
+margin:0;
+border:0px #5598d7 solid;
+overflow:hidden;
+}
+.ItemBlock,.ItemBlock2{
+margin:8px 4px 8px 12px;
+border:1px #c9d7db solid;
+overflow:hidden;
+}
+
+/*******************************************************    content   datatable     *************************************/
+.dateTable th{
+height:32px;
+font-size:14px;
+color:#1e1e1e;
+text-align:center;
+background:url(../img/TableTitle_bg.jpg) repeat-x bottom;
+
+border-bottom:1px #c9d7db solid;
+cursor:default;
+}
+.dateTable td{
+height:32px;
+font-size:13px;
+color:#1e1e1e;
+text-align:center;
+padding-top:1px ;
+padding-bottom:1px;
+border-right: dotted 1px #c7c7c7;cursor:default;
+}
+.dateTable tbody tr:hover{background:#e5ebee;}
+
+.dateTable2{
+width:100%;
+margin:8px 0;cursor:default;
+}
+.dateTable2 th{
+height:28px;
+font-family:"Microsoft YaHei","Î¢ÈíÑÅºÚ","SimSun","ËÎÌå";
+font-size:14px;
+color:#333333;
+text-align:left;
+padding-left:8px;
+padding-bottom:8px;cursor:default;
+}
+.dateTable2  td{
+text-align:left;
+font-family:"Microsoft YaHei","Î¢ÈíÑÅºÚ","SimSun","ËÎÌå";
+font-size:14px;
+padding-left:8px;
+padding-bottom:8px;
+background:#FFFFFF;
+padding-left:4px;
+color:#000000;
+cursor:default;
+}
+
+.TableStyle td{
+height:24px;
+line-height:2.0em;
+padding-top:0px;
+padding-bottom:0px;
+border-top:0px  #3399CC solid;
+border-bottom:1px #3399CC solid;
+background:#ABD2FA;
+cursor:default;
+}
+/*******************************************************     Button        *************************************/
+.buttonback,.buttonback2{
+width:100%;
+height:38px;
+padding-left:14px;
+/*background:#91e4ff;*/
+}
+.buttonback2{ text-align:center}
+.Button_1{
+border:0;
+font-family:"Microsoft YaHei","Î¢ÈíÑÅºÚ","SimSun","ËÎÌå";
+color:#FFFFFF;
+width:72px;
+height:28px;
+background:url(../img/Button_bg.png);
+margin-top:5px;
+}
+/*******************************************************    ÎÄ±¾¿ò       *************************************/
+.txt1,.txt2,.txt3{width:280px;height:32px; line-height:32px; border-top:solid 1px #a7b5bc;border-left:solid 1px #a7b5bc;  border-right:solid 1px #ced9df;  border-bottom:solid 1px #ced9df; text-indent:10px;margin-top:5px; margin-bottom:5px;}
+.txt3{width:142px;}
+.txt4{width:142px;height:32px; line-height:32px; text-indent:10px;border:0; background:#e5ebee; cursor:default;}
+
+.textarea_sty,.textarea_sty2{width:480px;line-height:32px; border-top:solid 1px #a7b5bc;border-left:solid 1px #a7b5bc;  border-right:solid 1px #ced9df;  border-bottom:solid 1px #ced9df; text-indent:10px;margin-top:5px; margin-bottom:5px;}
+.textarea_sty2{background:#e5ebee; cursor:default;}
+
+.SelectTxt
+{
+width:120px;
+height:20px;
+font-family:"SimSun","ËÎÌå";
+font-size:13px;
+
+}

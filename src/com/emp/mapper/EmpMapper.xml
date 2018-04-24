@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.emp.mapper.EmpMapper">
+	<resultMap type="emp" id="emps">
+		<id property="empno" column="empno" javaType="int" jdbcType="INTEGER" />
+		<result property="ename" column="ename" javaType="String" jdbcType="VARCHAR" />
+		<result property="dname" column="dname" javaType="String" jdbcType="VARCHAR" />
+		<result property="emptype" column="emptype" javaType="String" jdbcType="VARCHAR" />
+		<result property="telephone" column="telephone" javaType="String" jdbcType="VARCHAR" />
+		<result property="email" column="email" javaType="String" jdbcType="VARCHAR" />
+		<result property="phone" column="phone" javaType="String" jdbcType="VARCHAR" />
+		<result property="fax" column="fax" javaType="String" jdbcType="VARCHAR" />
+		<result property="message" column="message" javaType="String" jdbcType="VARCHAR" />
+	</resultMap> 
+	<select id="selectAllEmps"  resultMap="emps" >
+		select * from	emp
+	</select>
+	<select id="selectEmpListFromOneDept"  resultMap="emps" parameterType="String">
+		select * from	emp where dname = #{dname}
+	</select>
+	<select id="selectOneEmp"  parameterType="int" resultType="emp" >
+		select * from	emp where empno = #{empno}
+	</select>
+	<insert id="addEmp" parameterType="emp">
+		insert into emp(empno,ename,dname,emptype,telephone,email,phone,fax,message) values(#{empno},#{ename},#{dname},#{emptype},#{telephone},#{email},#{phone},#{fax},#{message})
+	</insert>
+	<update id="updateEmp" parameterType="emp">
+		update emp set empno=#{empno},ename=#{ename},dname=#{dname},emptype=#{emptype},telephone=#{telephone} ,email=#{email},phone=#{phone},fax=#{fax},message=#{message} where empno=#{empno}
+	</update>
+	<delete id="deleteEmp" parameterType="java.util.List">
+		delete from emp where empno in 
+		<foreach collection="list" item="empno" open="(" separator="," close=")">
+			#{empno}  
+    	</foreach>  
+	</delete>
+	<select id="selectEmpListByConditions"  parameterType="java.util.Map" resultMap="emps" >
+		select * from	emp 
+		<where>  
+        <if test="empno!=null and empno!='' ">  
+            empno like concat(concat('%',#{empno}),'%')  
+        </if>  
+        <if test="ename!= null and ename!= '' ">  
+            and ename like concat(concat('%',#{ename}),'%') 
+        </if>  
+        <if test="dname!=null and dname!= '' ">  
+            and dname = #{dname}  
+        </if>  
+        <if test="emptype!=null  and emptype!='' ">  
+            and emptype = #{emptype}  
+        </if>  
+    </where>  
+	</select>
+</mapper>

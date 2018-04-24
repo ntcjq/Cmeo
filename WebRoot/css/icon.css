@@ -1,0 +1,16 @@
+
+.ui-write {
+	TEXT-INDENT: -99999px; WIDTH: 16px; DISPLAY: block; BACKGROUND-REPEAT: no-repeat; HEIGHT: 16px; OVERFLOW: hidden;
+	margin-right:4px;
+}
+.ui-write {
+	BACKGROUND-IMAGE: url(../img/ui-icons_ffffff_256x240.png)
+}
+.person {
+	BACKGROUND-POSITION: -144px -96px
+}
+.power {
+	BACKGROUND-POSITION: 0px -176px
+}
+
+

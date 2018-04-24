@@ -1,0 +1,9 @@
+应该是
+人员表    人员角色表             角色表     角色权限表           权限表
+empid   ID empid role	 role	 ID  role limit	 limit
+
+由于权限就那么多  所以把权限写死在页面role-set.jsp   也没有权限表
+
+
+
+最终某个人的权限是通过人员角色表和角色权限表  多表连结查询得出的

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.generator.mapper.GeneratorMapper">
+	<resultMap type="generator" id="generators">
+		<id property="id" column="id" javaType="int" jdbcType="INTEGER" />
+		<result property="generatorName" column="generatorName" javaType="String" jdbcType="VARCHAR" />
+		<result property="managerId" column="managerId" javaType="int" jdbcType="INTEGER" />
+		<result property="dname" column="dname" javaType="String" jdbcType="VARCHAR" />
+		<result property="address" column="address" javaType="String" jdbcType="VARCHAR" />
+		<result property="message" column="message" javaType="String" jdbcType="VARCHAR" />
+	</resultMap> 
+	<select id="selectAllGenerators"  resultMap="generators" >
+		select * from	generator
+	</select>
+	<select id="selectOneGenerator"  parameterType="int" resultType="generator" >
+		select * from	generator  where id = #{id}
+	</select>
+	<insert id="addGenerator" parameterType="generator">
+		insert into generator(id,generatorName,managerId,dname,address,message) values(#{id},#{generatorName},#{managerId},#{dname},#{address},#{message})
+	</insert>
+	<update id="updateGenerator" parameterType="generator">
+		update generator set id=#{id},generatorName=#{generatorName},managerId=#{managerId},dname=#{dname} ,address=#{address},message=#{message} where id=#{id}
+	</update>
+	<delete id="deleteGenerator" parameterType="java.util.List">
+		delete from generator where id in 
+		<foreach collection="list" item="id" open="(" separator="," close=")">
+			#{id}  
+    	</foreach>  
+	</delete>
+	<select id="selectGeneratorListByConditions"  parameterType="java.util.Map" resultMap="generators" >
+		select * from	generator 
+		<where>  
+        <if test="generatorName!=null and generatorName!='' ">  
+            generatorName like concat(concat('%',#{generatorName}),'%')  
+        </if>  
+        <if test="managerId!= null and managerId!= '' ">  
+            and managerId =#{managerId} 
+        </if>  
+        <if test="dname!=null and dname!= '' ">  
+            and dname = #{dname}  
+        </if>  
+        <if test="address!=null  and address!='' ">  
+            and address like concat(concat('%',#{address}),'%') 
+        </if>  
+    </where>  
+	</select>
+</mapper>
